@@ -25,6 +25,7 @@ testMS = do
 
     print $ mergeSort [2,1]
     print $ mergeSort [5,8,1,3,6,9,8,7,13]
+    print $ mergeSort [2,3,1]
 
 
 main = testMS
