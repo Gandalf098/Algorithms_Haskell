@@ -5,7 +5,8 @@ mergeSort [a] = [a]
 mergeSort x =
     let s = splitSort x
     in uncurry mergedSort s
-splitSort :: [Int] -> ([Int], [Int]) -- takes a list and splits it
+
+splitSort :: [Int] -> ([Int], [Int]) -- takes a list and splits it, returning two sorted arrays
 splitSort x =
   let lsts = splitAt (div (length x) 2) x
    in Data.Bifunctor.bimap mergeSort mergeSort lsts
