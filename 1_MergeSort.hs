@@ -1,4 +1,4 @@
-import Data.Bifunctor
+import Data.Bifunctor ( Bifunctor(bimap) )
 
 mergeSort :: [Int] -> [Int] -- the main mergeSort func
 mergeSort [a] = [a]
