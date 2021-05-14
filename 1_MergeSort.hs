@@ -1,4 +1,5 @@
 import Data.Bifunctor ( Bifunctor(bimap) )
+import Data.List.Ordered ( foldt )
 
 mergeSort :: [Int] -> [Int] -- the main mergeSort func
 mergeSort [a] = [a]
@@ -10,13 +11,17 @@ splitSort :: [Int] -> ([Int], [Int]) -- takes a list and splits it, returning tw
 splitSort x =
   let lsts = splitAt (div (length x) 2) x
    in Data.Bifunctor.bimap mergeSort mergeSort lsts
-mergedSort :: [Int] -> [Int] -> [Int] -- merges the two sorted lists into a single sorted list
+--mergedSort :: [Int] -> [Int] -> [Int] -- merges the two sorted lists into a single sorted list
+mergedSort :: Ord a => [a] -> [a] -> [a]
 mergedSort [] [] = []
 mergedSort a [] = a
 mergedSort [] b = b
 mergedSort (a:as) (b:bs) =
     if a < b then a:mergedSort as (b:bs) else b:mergedSort (a:as) bs
 
+-- use foldt 
+mergesort    :: (Ord a) => [a] -> [a]
+mergesort xs = foldt mergedSort [] ( fmap (: []) xs )
 
 testMS = do
     print $ mergedSort [] []
@@ -31,6 +36,15 @@ testMS = do
     print $ mergeSort $ mappend [5,8,1,3,6,9,8,7,13] [6,9,2,4,7,10,9,8,14]
 
     print $ mergeSort $ reverse [1..64]
+
+    print $ mergesort [2,1]
+    print $ mergesort [5,8,1,3,6,9,8,7,13]
+    print $ mergesort [2,3,1]
+
+    print $ mergesort $ mappend [5,8,1,3,6,9,8,7,13] [6,9,2,4,7,10,9,8,14]
+
+    print $ mergesort $ reverse [1..64]
+
 
 main = testMS
 
