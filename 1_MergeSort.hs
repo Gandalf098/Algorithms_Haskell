@@ -24,7 +24,7 @@ mergesort    :: (Ord a) => [a] -> [a]
 mergesort xs = foldt mergedSort [] ( fmap (: []) xs )
 
 testMS = do
-    print $ mergedSort [] []
+    --print $ mergedSort [] []
     print $ mergedSort [3] []
     print $ mergedSort [] [3]
     print $ mergedSort [3] [4]
