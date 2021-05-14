@@ -28,6 +28,9 @@ testMS = do
     print $ mergeSort [5,8,1,3,6,9,8,7,13]
     print $ mergeSort [2,3,1]
 
+    print $ mergeSort $ mappend [5,8,1,3,6,9,8,7,13] [6,9,2,4,7,10,9,8,14]
+
+    print $ mergeSort $ reverse [1..64]
 
 main = testMS
 
