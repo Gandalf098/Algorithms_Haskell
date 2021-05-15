@@ -22,6 +22,7 @@ mergedSort (a:as) (b:bs) =
 -- use foldt 
 mergesort    :: (Ord a) => [a] -> [a]
 mergesort xs = foldt mergedSort [] ( fmap (: []) xs )
+--mergesort xs = foldt mergedSort [] ( [ [x] | x <- xs]  )
 
 testMS = do
     --print $ mergedSort [] []
